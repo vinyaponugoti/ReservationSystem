@@ -1,0 +1,134 @@
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)" >
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="reservationService.selectedReservation._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                 <label for="name" class="styles">Name :</label>
+                                  <!-- <input type="text" name="name" #name="ngModel" [(ngModel)]="reservationService.selectedReservation.name" placeholder="Enter full name"> -->
+                                  <!-- <label class="styles">Name :</label> -->
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                            <div>
+                                <input type="r" id="name" name="name" #name="ngModel" [(ngModel)]="reservationService.selectedReservation.name" placeholder="Enter full name">
+                            </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <label class="styles" for="sport">Sport :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                            <div>
+                                <select #name="ngModel" name="sport" id="sport" style="display: block;" [(ngModel)]="reservationService.selectedReservation.sport">
+                                  <option value="---Please select sport---" selected>---Please select sport---</option>
+                                  <option value="Volleyball">Volleyball</option>
+                                  <option value="Basketball">Basketball</option>
+                                  <option value="Football">Football</option>
+                                  <option value="Soccer">Soccer</option>
+                                  <option value="Hockey">Hockey</option>
+                                  <option value="Cricket">Cricket</option>
+                                  <option value="Baseball">Baseball</option>
+                                  <option value="Swimming">Swimming</option>
+                                  <option value="Golf">Golf</option>
+                                </select>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <label class="styles" for="day">Day :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                            <div>
+                                <select #name="ngModel" name="day" id="day" style="display: block;" [(ngModel)]="reservationService.selectedReservation.day">
+                                  <option value="---Please select day---" selected>---Please select day---</option>
+                                  <option value="Sunday">Sunday</option>
+                                  <option value="Monday">Monday</option>
+                                  <option value="Tuesday">Tuesday</option>
+                                  <option value="Wednesday">Wednesday</option>
+                                  <option value="Thursday">Thursday</option>
+                                  <option value="Friday">Friday</option>
+                                  <option value="Saturday">Saturday</option>
+                                </select>
+                            </div>
+
+
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="input-field col s12">
+                                  <label class="styles" for="time">Time :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                            <div>
+                                <select #name="ngModel" name="time" id="time" style="display: block;" [(ngModel)]="reservationService.selectedReservation.time">
+                                  <option value="---Please select time---" selected>---Please select time---</option>
+                                  <option value="3:00 p.m.">3:00 p.m.</option>
+                                  <option value="4:00 p.m.">4:00 p.m.</option>
+                                  <option value="5:00 p.m.">5:00 p.m.</option>
+                                  <option value="6:00 p.m.">6:00 p.m.</option>
+                                  <option value="7:00 p.m.">7:00 p.m.</option>
+                                  <option value="8:00 p.m.">8:00 p.m.</option>
+                                </select>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                  <button class="btn btn-custom left" type="submit" [disabled]="!reservationForm.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                              <tr class="styles">
+                                <th>Booked Reservation:</th>
+                                <th> Name</th>
+                                <th>Sport</th>
+                                <th>Day</th>
+                                <th>Time</th>
+                              </tr>
+                            </thead>
+                            <tr *ngFor="let reserv of reservationService.reservations" class="other">
+                              <td> </td>
+                              <td>{{reserv.name}}</td>
+                              <td>{{reserv.sport}}</td>
+                              <td>{{reserv.day}}</td>
+                              <td>{{reserv.time}}</td>
+                              <td>
+                                  <a class="action-btn" (click)="onEdit(reserv)">
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a class="action-btn" (click)="onDelete(reserv._id,reservationForm)">
+                                    <i class="material-icons">delete</i>
+                                  </a>
+                                </td>
+                            </tr>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
